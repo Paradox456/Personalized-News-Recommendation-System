@@ -34,5 +34,5 @@ The Personalized News Recommendation System is a web application designed to del
 ### Clone the Repository
 
 ```bash
-git clone <https://github.com/Paradox456/Personalized-News-Recommendation-System.git>
+git clone https://github.com/Paradox456/Personalized-News-Recommendation-System.git
 cd personalized-news-recommendation-system
