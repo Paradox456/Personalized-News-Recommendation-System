@@ -1,0 +1,108 @@
+/* Header.css */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #333; /* Dark background for header */
+    color: #ffffff; /* White text color */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 15px; /* Spacing between links */
+}
+
+.nav-links a {
+    color: #ffffff; /* White link color */
+    text-decoration: none; /* Remove underline */
+    padding: 5px 10px; /* Padding around links */
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: #444; /* Darker background on hover */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.search-button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Button color */
+    color: white;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: #0056b3; /* Darker button on hover */
+}
+
+.sign-in-button {
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745; /* Green background for Sign In */
+    color: white;
+    cursor: pointer;
+    margin-left: 20px; /* Space between search and sign-in button */
+    transition: background-color 0.3s;
+}
+
+.sign-in-button:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+/* src/components/Header.css */
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* src/components/SignIn.css */
+
+.sign-in-container {
+    padding: 20px;
+}
+
+.sign-in-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-in-container div {
+    margin-bottom: 10px;
+}
