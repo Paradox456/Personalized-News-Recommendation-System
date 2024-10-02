@@ -1,5 +1,7 @@
 // src/components/SignIn.js
 import React, { useState } from 'react';
+import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import FacebookLogin from 'react-facebook-login';
 import './SignIn.css'; // Import CSS for styling
 
 const SignIn = () => {
@@ -20,85 +22,93 @@ const SignIn = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission here (e.g., send data to API)
-    console.log(formData);
+    console.log(formData); // Handle form submission here (e.g., send data to API)
+  };
+
+  const handleGoogleSuccess = (response) => {
+    console.log('Google Sign-In Success:', response);
+    // You can now send the response to your backend to authenticate or create a user
+  };
+
+  const handleGoogleFailure = (error) => {
+    console.error('Google Sign-In Failed:', error);
+  };
+
+  const handleFacebookResponse = (response) => {
+    console.log('Facebook Sign-In Success:', response);
+    // Handle the Facebook response, e.g., send the data to your backend
   };
 
   return (
-    <div className="container">
-      <div className="form-container">
-        <div className="logo">
-          <span className="asterisk">#</span> NewsWiz
-        </div>
-        <h1>Sign up</h1>
-        <form onSubmit={handleSubmit}>
-          <div className="input-group">
-            <label htmlFor="fullName">Full name</label>
-            <input
-              type="text"
-              id="fullName"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              required
-            />
+    <GoogleOAuthProvider clientId="741215184958-3r17fd4648lcmfpp0t9obu3req5lal8g.apps.googleusercontent.com">
+      <div className="container">
+        <div className="form-container">
+          <div className="logo">
+            <span className="asterisk">#</span> NewsWiz
           </div>
-          <div className="input-group">
-            <label htmlFor="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="input-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          <div className="checkbox-group">
-            <input
-              type="checkbox"
-              id="receiveUpdates"
-              name="receiveUpdates"
-              checked={formData.receiveUpdates}
-              onChange={handleChange}
-            />
-            <label htmlFor="receiveUpdates">
-              I want to receive updates via email.
-            </label>
-          </div>
-          <button type="submit" className="signup-button">
-            Sign up
-          </button>
-          <p className="account-text">
-            Already have an account? <a href="#">Sign in</a>
-          </p>
-          <div className="separator">
-            <span>or</span>
-          </div>
-          <div className="button-container">
-            <button type="button" className="google-button">
-                <img src="https://img.icons8.com/color/16/000000/google-logo.png" alt="Google logo" />
-                Sign up with Google
-            </button>
-            <button type="button" className="facebook-button">
-                <img src="https://img.icons8.com/color/16/000000/facebook-new.png" alt="Facebook logo" />
-                Sign up with Facebook
-            </button>
+          <h1>Sign up</h1>
+          <form onSubmit={handleSubmit}>
+            <div className="input-group">
+              <label htmlFor="fullName">Full name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                value={formData.fullName}
+                onChange={handleChange}
+                required
+              />
             </div>
-        </form>
+            <div className="input-group">
+              <label htmlFor="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <div className="input-group">
+              <label htmlFor="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+            <button type="submit" className="signup-button">
+              Sign up
+            </button>
+            <p className="account-text">
+              Already have an account? <a href="#">Sign in</a>
+            </p>
+            <div className="separator">
+              <span>or</span>
+            </div>
+            <div className="button-container">
+              <GoogleLogin
+                onSuccess={handleGoogleSuccess}
+                onError={handleGoogleFailure}
+              />
+              <FacebookLogin 
+              appId = '840772334530090'
+              autoLoad={false}
+              fields="name,email,picture"
+              callback={handleFacebookResponse}
+              icon="fa-facebook"
+              textButton=" Sign up with Facebook"
+              cssClass="facebook-button"
+              />    
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </GoogleOAuthProvider>
   );
 };
 
